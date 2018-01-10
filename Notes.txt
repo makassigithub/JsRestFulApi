@@ -1,0 +1,7 @@
+0. Create directory struture
+1.Create Schema and dataModel
+2.Created local DB, prepare mockdata and populate DB;
+3.Setup environmnet for script automation
+4.Create models
+5.Create Api
+6.Test Api
