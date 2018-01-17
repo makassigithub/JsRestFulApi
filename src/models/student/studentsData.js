@@ -55,9 +55,9 @@ mongodb.connect(url, function (err, database) {
         console.log(err);
         return;
     }
-    var bookDB = database.db('schoolAPI');
-    var Books = bookDB.collection('students');
-    Books.insert(data);
+    var studentDB = database.db('schoolAPI');
+    var Students = studentDB.collection('students');
+    Students.insert(data);
     console.log('done');
     database.close();
 });

@@ -1,5 +1,6 @@
-var mongoose = require('mongoose');
-var getGrade = require('./grades');
+var mongoose = require('mongoose'),
+    getGrade = require('./grades'),
+    courseSchema = require('../course').courseSchema;
 
 var resultTemplate = {
     mark: {
@@ -15,8 +16,9 @@ var resultTemplate = {
             return getGrade(this.mark);
         }   
     },
-    average: Number,
-    best: Number
+    course: courseSchema,
+    class_average: Number,
+    class_best: Number
 };
 var resultSchema = new mongoose.Schema(resultTemplate);
 mongoose.connect('mongodb://localhost/schoolAPI');
