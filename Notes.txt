@@ -2,7 +2,8 @@
 1.Create Schema and dataModel
 2.Created local DB, prepare mockdata and populate DB;
 3.Setup environmnet for script automation
-4.Create models and Controllers and Middlwares for students:
+4.create server module
+6.Create models and Controllers and Middlwares for students:
      a./student/getAll
      b./student/addOne
      c./student/getOne
@@ -22,5 +23,5 @@
      q.student/results/patchOne
      r./student/results/remove
   
-5.Create Api
-6.Test Api
+6.Create Api
+7.Test Api
