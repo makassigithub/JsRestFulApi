@@ -1,5 +1,4 @@
 var studentController = function(Student) {
-
     var get_all  = function(req,res) {
         Student.find(function(err,students){   // The find() takes a query as param
             if (err) {
@@ -11,7 +10,7 @@ var studentController = function(Student) {
                 students.forEach(function(student) {
                     var singleStudent = student.toJSON();
                     singleStudent.links = {};
-                    singleStudent.links.self = 'http://'+req.headers.host+'/api/students/'+singleStudent._id;
+                    singleStudent.links.self = 'http://'+req.headers.host+'/api/v1/student/'+singleStudent._id;
                     returnStudents.push(singleStudent);
                 });
                 console.log('length:',returnStudents.length);
@@ -36,15 +35,16 @@ var studentController = function(Student) {
         res.json(req.foundStudent);
     };
     var update = function(req,res){
+        console.log(req.foundStudent);
+        console.log(' incoming body: ',req.body);
         //update the student found my the middleware form req.body and save it
-        var foundStudent = req.foundStudent;
-        for(var prop in foundStudent){
-            req.foundStudent[prop] = req.body[prop];
+        console.log('getting into the loop;');
+        for(var prop in req.foundStudent){
+            if(prop in req.body ){
+                req.foundStudent[prop] = req.body[prop];
+            }
         }
-        /*req.foundStudent.title = req.body.title;
-        req.foundStudent.author = req.body.author;
-        req.foundStudent.genre = req.body.genre;
-        req.foundStudent.isRead = req.body.isRead;*/
+
         req.foundStudent.save(function(err){
             if (err)
             {
@@ -60,8 +60,10 @@ var studentController = function(Student) {
             delete req.body._id;
         }
         // We update each field in foundStudent if provided in req.body
-        for (var field in req.body){
-            req.foundStudent[field] = req.body[field];
+        for (var field in req.foundStudent){
+            if (field in req.body){
+                req.foundStudent[field] = req.body[field];
+            }
         }
         // pacth the student now
         req.foundStudent.save(function(err){
@@ -73,7 +75,7 @@ var studentController = function(Student) {
         });
     };
     var remove = function(req,res){
-        req.foundBook.remove(function(err){
+        req.foundStudent.remove(function(err){
             if (err)
             {
                 res.status(500).send(err); 

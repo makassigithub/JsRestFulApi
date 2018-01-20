@@ -1,6 +1,7 @@
 module.exports = function(StudentModel) {  
     return  function(req,res,next){
         StudentModel.findById(req.params.studentId,function(err,student){  
+            console.log('studentId: ',req.params.studentId);
             if (err) {
                 res.status(500).send(err);
             } else if (student){

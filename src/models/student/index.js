@@ -2,7 +2,6 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     Buffer = require('buffer');
 
-
 var studentTemplate = {
     first_name: {
         type: String,
@@ -23,7 +22,7 @@ var studentTemplate = {
                 //Ensure date is in the pass and matches student's age;
                 var date_year = date.getFullYear();
                 var currentYear = Date().getFullYear();
-                if(date > currentYear){
+                if(date_year > currentYear){
                     return false;
                 }
                 return this.age = currentYear-date_year-1 || currentYear-date_year || currentYear-date_year+1;
@@ -69,7 +68,8 @@ var studentTemplate = {
     },
     payed: {
         type: Number,
-        min:0
+        min:0,
+        default:0
     },
     
 };
@@ -81,7 +81,9 @@ studentSchema.virtual('full_name').get(function(){
     return cap_fn+' '+ cap_ln;
 });
 
-mongoose.connect('mongodb://localhost/schoolAPI');
+//mongoose.connect('mongodb://localhost/schoolAPI');
 module.exports = mongoose.model('Student',studentSchema,'students');
+
+//module.exports = mongoose.model('Student',studentSchema,'students');
 module.exports.studentSchema = studentSchema; //will be used for unit test
 

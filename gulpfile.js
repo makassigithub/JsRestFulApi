@@ -25,7 +25,7 @@ gulp.task('serve', function () {
 //linting
 
 gulp.task('lint', function () {
-    return gulp.src('src/**')
+    return gulp.src(['app.js','src/**'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());

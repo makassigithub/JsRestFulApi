@@ -7,7 +7,7 @@ var studentRouter = require('express').Router(),
 //Get the bookModel
 
 var routes = function(){
-    studentRouter.route('/student')
+    studentRouter.route('/')
         .post(studentController.addStudent)
         .get(studentController.findAllStudents);
     // We should should avoid repeating ourself by using a middleware to findById()

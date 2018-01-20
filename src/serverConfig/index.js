@@ -4,6 +4,7 @@ var express  = require('express'),
 
 //We use these route for basci testing
 module.exports = function(){
+    /*
     app.use('/greatings',function(req,res){
         res.send('Hello!');
     });
@@ -15,7 +16,7 @@ module.exports = function(){
     });
     app.use('/',function(req,res){
         res.send('inside the server');
-    });
+    }); */
     
     return app;
 };    
