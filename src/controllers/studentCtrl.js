@@ -1,6 +1,13 @@
 var studentController = function(Student) {
     var get_all  = function(req,res) {
-        Student.find(function(err,students){   // The find() takes a query as param
+        //Implementing generic query
+        var query = {};
+        for(var field in req.query) {
+            if(req.query[field]){
+                query[field] = req.query[field];
+            }
+        }
+        Student.find(query, function(err,students){   // The find() takes a query as param
             if (err) {
                 res.status(500).send(err);
             }else{
