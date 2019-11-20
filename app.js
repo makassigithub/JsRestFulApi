@@ -1,22 +1,21 @@
+var server = require("./src/serverConfig")(),
+  //api = require('./src/api')(),
+  studentRoutes = require("./src/routes/studentRoute")(),
+  mongoose = require("mongoose"),
+  bodyParser = require("body-parser");
 
-var server = require('./src/serverConfig')(),
-    //api = require('./src/api')(),
-    studentRoutes = require('./src/routes/studentRoute')(),
-    mongoose = require('mongoose'),
-    bodyParser = require('body-parser');
-
-mongoose.connect('mongodb://localhost/schoolAPI');
+mongoose.connect("mongodb://mongo/schoolAPI");
 var port = process.env.PORT || 3000;
-server.use(bodyParser.urlencoded({extended:true}));
+server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
 // using routes;
-server.use('/api/v1/student',studentRoutes);
-server.get('/',function(req,res){
-    res.send('Welcome to the API');
+server.use("/api/v1/student", studentRoutes);
+server.get("/", function(req, res) {
+  res.send("Welcome to the API");
 });
 
 // listening to ports
-server.listen(port,function(){
-    console.log('listening to port: ',port);
+server.listen(port, function() {
+  console.log("listening to port: ", port);
 });
