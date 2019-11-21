@@ -4,6 +4,11 @@ var server = require("./src/serverConfig")(),
   mongoose = require("mongoose"),
   bodyParser = require("body-parser");
 
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
+mongoose.set("useUnifiedTopology", true);
+
 mongoose.connect("mongodb://mongo/schoolAPI");
 var port = process.env.PORT || 3000;
 server.use(bodyParser.urlencoded({ extended: true }));
