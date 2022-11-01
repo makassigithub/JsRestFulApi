@@ -18,9 +18,9 @@
   },
   "devDependencies": {
     "eslint": "^4.15.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-eslint": "^4.0.1",
     "gulp-mocha": "^5.0.0",
-    "gulp-nodemon": "^2.2.1"
+    "gulp-nodemon": "^2.5.0"
   }
 }
